@@ -58,6 +58,10 @@ IntelliJ IDEAには、ユニットテストが失敗したときに assertEquals
 * AssertJ 3.21.0
 * JUnit 5.8.1 / 4.13.2
 
+ソースコードは以下の場所に置いてあります。
+
+https://github.com/orangain/assertj-junit5
+
 ## 参考
 
 * [Support opentest4j in all tests not just JUnit 5 : IDEA-179482](https://youtrack.jetbrains.com/issue/IDEA-179482)
