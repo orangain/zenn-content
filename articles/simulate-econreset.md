@@ -3,7 +3,7 @@ title: "HTTPレスポンスボディを返す途中でわざとECONRESETを発�
 emoji: "🤕"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["nodejs", "http"]
-published: false
+published: true
 ---
 
 あるHTTPのプロキシサーバーをテストする際に、レスポンスボディを返し始めた後にTCPレベルのエラーが発生するという状況を再現したくなり、そのような挙動をするHTTPサーバーをNode.jsで作ってみました。
