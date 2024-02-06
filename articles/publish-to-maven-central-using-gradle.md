@@ -8,7 +8,7 @@ published: true
 
 ## はじめに
 
-Maven Central Repository (以降、Maven Central) はJavaなどのライブラリを公開するための代表的なMavenリポジトリです。これまでMaven Centralにライブラリを公開するためには、 issues.sonatype.org というJIRAでの申請が必要でしたが、このシステムが2024年2月1日に[退役した](https://central.sonatype.org/news/20240109_issues_sonatype_org_deprecation/)ことに伴い、Maven Centralへの新しいライブラリ公開手順が追加されました。
+Maven Central Repository (以降、Maven Central) はJavaなどのライブラリを公開するための代表的なMavenリポジトリです。これまでMaven Centralにライブラリを公開するためには、 issues.sonatype.org というJIRAでの申請が必要でしたが、このシステムが2024年2月1日に[廃止された](https://central.sonatype.org/news/20240109_issues_sonatype_org_deprecation/)ことに伴い、Maven Centralへの新しいライブラリ公開手順が追加されました。
 
 以前の手順ではOSSRHと呼ばれるシステムが使用されていましたが、新しい手順では[Central Portal](https://central.sonatype.com/)からライブラリを公開できます。GitHubアカウントでのログインに対応しているため、ライブラリのグループIDとして `io.github.{アカウント名}` で始まるものを利用する場合には、公開がだいぶ楽になりました。
 
@@ -77,13 +77,6 @@ GPGの鍵ペアを持っていない場合、GPG/PGPで署名するための準�
     ```sh
     gpg --keyserver keyserver.ubuntu.com --send-keys {鍵ID}
     ```
-
-4. ファイルへの秘密鍵のエクスポート
-    ```sh
-    gpg --export-secret-keys {鍵ID} > private-key.pem
-    ```
-
-パスフレーズと秘密鍵は控えておきます。
 
 [^1]: この手順を実施する代わりに、後のSonatype Central Uploadプラグインの設定でpublicKeyを指定することも可能ですが、この手順を実施する方が楽だと思います。
 
@@ -206,10 +199,10 @@ https://github.com/orangain/json-fuzzy-match
 次のように環境変数を設定して、Gradleのタスク `sonatypeCentralUpload` を実行することでライブラリを公開できます。
 
 ```sh
-export SONATYPE_CENTRAL_USERNAME={username}
-export SONATYPE_CENTRAL_PASSWORD={password}
-export PGP_SIGNING_KEY=$(cat /path/to/private-key.pem)
-export PGP_SIGNING_KEY_PASSPHRASE={秘密鍵のパスフレーズ}
+export SONATYPE_CENTRAL_USERNAME='{username}'
+export SONATYPE_CENTRAL_PASSWORD='{password}'
+export PGP_SIGNING_KEY=$(gpg --armor --export-secret-keys {鍵ID})  # GPG鍵ペア生成時のパスフレーズが要求される
+export PGP_SIGNING_KEY_PASSPHRASE='{秘密鍵のパスフレーズ}'
 
 ./gradlew sonatypeCentralUpload
 ```
@@ -241,7 +234,7 @@ BUILD SUCCESSFUL in 1m 17s
 
 おまけとして、GitHub Actionsを使ってタグをつけたときに自動でライブラリを公開するための設定を紹介します。以下のような設定を `.github/workflows/publish.yml` に追加します。
 
-この例では、productionという名前の[Environment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)を使用しており、Environment Secretsに環境変数と同じ名前のシークレットを設定していることを前提としています。
+この例では、productionという名前の[Environment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)を使用しており、Environment Secretsに手順5の環境変数と同じ名前と値でシークレットを設定していることを前提としています。
 
 ```yml
 name: Publish to Central Repository
