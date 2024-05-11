@@ -7,7 +7,7 @@ published: false
 published_at: "2020-04-12"
 ---
 
-Value Objectとして使っている、単一プロパティを持つdata classを、シンプルなJSONとして表現するのにちょっと手こずったのでまとめておきます。
+Value Objectとして使っている、単一プロパティを持つdata classを、JacksonでシンプルなJSONとして表現するのにちょっと手こずったのでまとめておきます。
 
 ## 問題設定
 
