@@ -4,9 +4,8 @@ emoji: "📑"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react"]
 published: false
+published_at: "2020-07-05"
 ---
-
-これは 2020-07-05 に書かれた記事を再投稿したものです。2024年現在での正確性は保証できません。
 
 [Semantic UI React](https://react.semantic-ui.com/) を使っていて `Input` と `Form.Input` の違いがよくわかっていなかったので、ちゃんと調べてみました。
 

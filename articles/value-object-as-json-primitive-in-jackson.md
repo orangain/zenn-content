@@ -4,9 +4,8 @@ emoji: "🧩"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["jackson", "kotlin"]
 published: false
+published_at: "2020-04-12"
 ---
-
-これは 2020-04-12 に書かれた記事を再投稿したものです。2024年現在での正確性は保証できません。
 
 Value Objectとして使っている、単一プロパティを持つdata classを、シンプルなJSONとして表現するのにちょっと手こずったのでまとめておきます。
 
