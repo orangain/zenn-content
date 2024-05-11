@@ -3,7 +3,7 @@ title: "Jacksonで単一プロパティを持つdata classをJSONのプリミテ
 emoji: "🧩"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["jackson", "kotlin"]
-published: false
+published: true
 published_at: "2020-04-12"
 ---
 
