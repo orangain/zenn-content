@@ -223,6 +223,5 @@ Semantic UI Reactでは、 `Form.Input` を使うことで、少ない記述で�
 
 ![エラーが有る場合の見た目](https://crieit.now.sh/upload_images/5a11f6f3844392eef8bb653508a390ab5f01e43621baf.png)
 
------
 
 [^1]: Material UIの [TextField](https://material-ui.com/components/text-fields/) と同じようなイメージです。

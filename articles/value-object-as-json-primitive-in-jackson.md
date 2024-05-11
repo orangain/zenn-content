@@ -47,9 +47,9 @@ data class UserName @JsonCreator(mode = JsonCreator.Mode.DELEGATING) constructor
 
 まず、 [@JsonValue](http://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonValue.html) はシリアライズに影響を与えるアノテーションで、シリアライズ結果を取得するメソッドに付けます。
 
-次に、 [@JsonCreator](http://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonCreator.html) はデシリアライズに影響を与えるアノテーションで、JSONの値からオブジェクトを作るためのコンストラクターやファクトリーメソッドに付けます。Javaの場合はコンストラクターに `@JsonCreator` をつけるだけでいいのですが、Kotlin Moduleを使っている場合はうまく行かないので、 `mode = JsonCreator.Mode.DELEGATING` が必要です [1]。
+次に、 [@JsonCreator](http://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonCreator.html) はデシリアライズに影響を与えるアノテーションで、JSONの値からオブジェクトを作るためのコンストラクターやファクトリーメソッドに付けます。Javaの場合はコンストラクターに `@JsonCreator` をつけるだけでいいのですが、Kotlin Moduleを使っている場合はうまく行かないので、 `mode = JsonCreator.Mode.DELEGATING` が必要です [^1]。
 
-なお、Kotlinでプライマリコンストラクターにアノテーションをつけるには、 `constructor` キーワードが必要です [2]。
+なお、Kotlinでプライマリコンストラクターにアノテーションをつけるには、 `constructor` キーワードが必要です [^2]。
 
 ## コード
 
@@ -106,8 +106,6 @@ https://stackoverflow.com/questions/11031110/how-to-instruct-jackson-to-serializ
 https://stackoverflow.com/questions/55492657/is-there-a-generic-way-to-deserialize-single-valued-value-objects-without-custo
 
 
-## 注釈
-
-- [1] @jsonCreator on primary constructor is not working · Issue #305 · FasterXML/jackson-module-kotlin
+[^1]: @jsonCreator on primary constructor is not working · Issue #305 · FasterXML/jackson-module-kotlin
 https://github.com/FasterXML/jackson-module-kotlin/issues/305
-- [2] https://kotlinlang.org/docs/reference/annotations.html#usage
+[^2]: https://kotlinlang.org/docs/reference/annotations.html#usage
